@@ -43,12 +43,12 @@ def compare(oldPath,newPath,keys):
     #取差集，为新增项
     print('正在比对，查找新增项...')
     addObj=data2.append(data1AndData2).drop_duplicates(subset=keys,keep=False)
-    addObj.insert(data1.shape[1],'整改结果','新增') 
+    addObj.insert(data1.shape[1],'对比结果','新增') 
     #取差集，为减少项
     print('正在比对，查找减少项...')
     subObj=data1.append(data1AndData2).drop_duplicates(subset=keys,keep=False)
-    subObj.insert(data1.shape[1],'整改结果','减少') 
-    data1AndData2.insert(data1.shape[1],'整改结果','相同')
+    subObj.insert(data1.shape[1],'对比结果','减少') 
+    data1AndData2.insert(data1.shape[1],'对比结果','相同')
     #输出文件
     print('正在整合数据...')
     data1AndData2.append(addObj).append(subObj).to_excel(os.getcwd()+r'\compare_{}.xlsx'.format(time.strftime("%Y%m%d%H%M%S", time.localtime())),index=False)
