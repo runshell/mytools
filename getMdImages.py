@@ -62,7 +62,7 @@ def getPath(path):
 
 if __name__=='__main__':
     threads=[]
-    for md in getPath('.'):
+    for md in getPath(os.getcwd()):
         if os.path.isfile(md) and md.endswith('.md'):
             print(md)
             threads.append(threading.Thread(target=run,args=(md,)))
